@@ -27,9 +27,8 @@ void setup() {
 void loop() {
   Input = analogRead(A0);
   myPID.Compute();
+  //find something simple to control on
+
   analogWrite(DAC1, Input);
-  //gitg comment
-  //git gui comment
-  //subl comment
 }
 //IDO 0544997948
