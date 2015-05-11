@@ -29,7 +29,7 @@ void loop() {
 		//print 3 digits after the floating point
         Serial.println(incomingByte, DEC);
 
-        analogWrite(DAC0, incomingByte);
+        analogWrite(DAC1, incomingByte);
 	}
 }
 

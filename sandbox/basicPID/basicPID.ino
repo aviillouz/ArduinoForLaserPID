@@ -1,9 +1,5 @@
-/********************************************************
- * PID Basic Example
- * Reading analog input 0 to control analog PWM output 3
- ********************************************************/
-
- #include <PID_v1.h>
+#include <PID_v1.h>
+int DACBits = 12;
 
 //Define Variables we'll be connecting to
 double Setpoint, Input, Output;
@@ -13,13 +9,14 @@ PID myPID(&Input, &Output, &Setpoint,2,5,0, DIRECT);
 
 void setup()
 {
-	Serial.begin(9600);
-  //initialize the variables we're linked to
-  analogWriteResolution(12);
+	Serial.begin(115200);
+  
+  analogWriteResolution(DACBits); 
+  analogReadResolution(DACBits);
   // Input = analogRead(A0);
   Input = analogRead(A0);
 
-  Setpoint = 2000;
+  Setpoint = Input;
 
   //turn the PID on
   myPID.SetOutputLimits(0,4000);
@@ -30,7 +27,7 @@ void loop()
 {
 	Input = analogRead(A0);
 	myPID.Compute();
-	analogWrite(DAC0, Output);
+	analogWrite(DAC1, Input);
 	delay(100);
 	Serial.print("Input: ");
 	Serial.print(Input);
