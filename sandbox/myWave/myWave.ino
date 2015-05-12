@@ -10,6 +10,7 @@ PID myPID(&Input, &Output, &Setpoint,2,5,0, DIRECT);
 int value = 0;
 int DACBits = 12;
 int input = 0;
+int gain = 1;
 
 void setup() {
   Serial.begin(115200);
@@ -29,6 +30,8 @@ void loop() {
   myPID.Compute();
   //find something simple to control on
   //subl push
-  analogWrite(DAC1, Input);
+  gain++;
+  analogWrite(DAC1, gain*Input);
+  if (gain > 4) gain = 1;
 }
 //IDO 0544997948
