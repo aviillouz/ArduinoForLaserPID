@@ -9,12 +9,12 @@ void setup() {
 	analogWriteResolution(DACBits);  
   analogReadResolution(DACBits);
   Input = analogRead(A0);
-  Setpoint = 1000;
+  Setpoint = 100;
 }
 
 void loop() {
   Input = analogRead(A0);
-  analogWrite(DAC1, gain*Input);
+  analogWrite(DAC1, Output);
 }
 
 
