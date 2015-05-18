@@ -32,6 +32,7 @@ void loop() {
 }
 
 //TODO connect to AOM
+//go to lab setup
 
 
 
