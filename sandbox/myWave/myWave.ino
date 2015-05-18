@@ -17,20 +17,17 @@ void setup() {
 	analogWriteResolution(DACBits);  
   analogReadResolution(DACBits);
   Input = analogRead(A0);
-  Setpoint = 1000;
+  Setpoint = 100;
 
   //turn the PID on
   myPID.SetOutputLimits(0,4000);
   myPID.SetMode(AUTOMATIC);
-
+  myPID.SetSampleTime(1); // Set PID compute time to 1 ms
 }
 
 void loop() {
   Input = analogRead(A0);
   myPID.Compute();
-  //find something simple to control on
-  gain++;
-  analogWrite(DAC1, gain*Input);
-  if (gain > 4) gain = 1;
+  analogWrite(DAC1, Output);
 }
 //IDO 0544997948
