@@ -4,8 +4,8 @@ int DACBits = 12;
 
 //PID global variables
 double Setpoint, Input, Output;
-int parameter k1 = 2;  
-int parameter k2 = 5;
+double parameter k1 = 2;  
+double parameter k2 = 5;
 double previousSignal;
 double previousError;
 
