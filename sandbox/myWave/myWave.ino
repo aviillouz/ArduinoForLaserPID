@@ -31,6 +31,8 @@ void loop() {
   analogWrite(DAC1, Output);
 }
 
+//TODO connect to AOM
+
 
 
 
