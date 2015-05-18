@@ -29,7 +29,6 @@ void loop() {
   Input = analogRead(A0);
   myPID.Compute();
   //find something simple to control on
-  //subl push
   gain++;
   analogWrite(DAC1, gain*Input);
   if (gain > 4) gain = 1;
