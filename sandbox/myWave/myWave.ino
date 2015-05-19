@@ -4,8 +4,8 @@ int DACBits = 12;
 
 //PID global variables
 double Setpoint, Input, Output;
-double parameter k1 = 2;  
-double parameter k2 = 5;
+double k1 = 2;  
+double k2 = 5;
 double previousSignal;
 double previousError;
 
@@ -28,7 +28,8 @@ void loop() {
 	Output = previousSignal + k1*CurrentError - k2*previousError;
 	previousError = CurrentError;
 	previousSignal = Output;
-  analogWrite(DAC1, Output);
+  // analogWrite(DAC1, Output);
+  analogWrite(DAC1, Input);
 }
 
 //TODO connect to AOM
