@@ -29,8 +29,9 @@ void loop() {
 		//print 3 digits after the floating point
         Serial.println(incomingByte, DEC);
 
-        analogWrite(DAC1, constrain(incomingByte,0,2000));
+        analogWrite(DAC1, constrain(incomingByte,0,4000));
 	}
+	 Serial.println(analogRead(A0));
 }
 
 int asciiToInt (int asciiChar){

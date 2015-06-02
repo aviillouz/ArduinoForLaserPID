@@ -76,3 +76,4 @@ static int waveformsTable[maxWaveform][maxSamplesNum] = {
 };
 
 #endif 
+
