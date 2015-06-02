@@ -9,17 +9,16 @@ PID myPID(&Input, &Output, &Setpoint,2,5,0, DIRECT);
 
 void setup()
 {
+  Setpoint = 1000;
 	Serial.begin(115200);
   
   analogWriteResolution(DACBits); 
   analogReadResolution(DACBits);
-  // Input = analogRead(A0);
   Input = analogRead(A0);
 
-  Setpoint = Input;
 
   //turn the PID on
-  myPID.SetOutputLimits(0,4000);
+  myPID.SetOutputLimits(0,3000);
   myPID.SetMode(AUTOMATIC);
 }
 
@@ -27,14 +26,20 @@ void loop()
 {
 	Input = analogRead(A0);
 	myPID.Compute();
-	analogWrite(DAC1, Input);
+	analogWrite(DAC1, Output);
+	print();
 	delay(100);
-	Serial.print("Input: ");
-	Serial.print(Input);
-	Serial.print(", Setpoint: ");
-	Serial.print(Setpoint);
-	Serial.print(" -> Output: ");
-	Serial.println(Output);
+}
+
+void print(){
+  Serial.print(millis());
+  Serial.print(",");
+  Serial.print(Setpoint);
+  Serial.print(",");
+  Serial.print(Input);
+  Serial.print(",");
+  Serial.print(Output);
+  Serial.println();
 }
 
 
