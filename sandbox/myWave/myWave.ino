@@ -28,7 +28,6 @@ void loop() {
   //Convert to error from setpoint
 	CurrentError = Setpoint - Input;
 
-
 	//Calculate Output
 	Output += previousSignal + k1*CurrentError - k2*previousError;
   analogWrite(DAC1, Output);
@@ -48,7 +47,16 @@ void print(){
 	Serial.print(",");
 	Serial.print(CurrentError);
   Serial.println();
+
 }
+
+//8.6.15 measurement, without print:
+//1.6287V is 1.224mW
+//pk-pk is 30mV. noise at 250Hz (4ms)
+//(un controlled laser shows pk-pk 80mV
+//noise at 212mHz (4.7s))
+//control with printing adds "noise" of 20ms long
+//and pk-pk is about 40mV
 
 
 
